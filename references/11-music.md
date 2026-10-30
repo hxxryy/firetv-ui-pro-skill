@@ -110,6 +110,32 @@ Plumbing that matters:
 - Log each step (`log` tag) so a changed app layout is easy to diagnose; show "Couldn't start …"
   rather than hanging.
 
+## Faster: start library playlists by ID (no screens)
+
+- Apple tags each track's metadata with the playlist it plays from:
+  `com.apple.android.music.playback.metadata.CURRENT_CONTAINER_ID` (e.g. `p.xxxx`, or `pl.u-…` for
+  added playlists). Also useful: `LIKE_STATE` (real favourite state), `NUM_TRACKS`.
+- `playFromUri("apple-musics://music.apple.com/library/playlist/<id>")` starts that playlist in ~2 s,
+  no agent. Catch: it also opens Apple's screen, so watch window changes in the accessibility
+  service for a few seconds and bring your launcher straight back.
+- Learn each ID once: open the playlist in the app, press Play, read `CURRENT_CONTAINER_ID` (do it for
+  all playlists right after importing them, then restore the previous playlist, song and position).
+- Shuffle without touching the UI: custom action `android.support.v4.media.session.action.SET_SHUFFLE_MODE`
+  with int extra `…ARGUMENT_SHUFFLE_MODE` (1 on, 0 off). Set it before starting the playlist.
+- `playFromMediaId` only accepts Android Auto tree IDs (`__AUTO_ROOT__/…`) or catalogue IDs; library
+  IDs alone are ignored (found by disassembling with the SDK's `dexdump`).
+- Turn off the app's Crossfade on weak hardware (two songs decode at once during transitions).
+
+## Agent safety (learnt the hard way)
+
+- **The remote must always win**: any key press during a job cancels it cleanly (back out, restore the
+  music, return). Never leave the user locked behind a cover.
+- If the app leaves the screen mid-job (too many Backs), reopen it and re-navigate; don't wait.
+- Cap Back presses, add a per-step watchdog (reset it while scrolling makes progress), and keep the
+  overall timeout short. Show "Press Back to cancel" on the cover.
+- A selected bottom-bar tab is often not clickable: wait for its content instead of pressing Back.
+- Back out of the app's screens after every job so it frees their (GPU) memory.
+
 ## Spotify
 
 Spotify's TV app has a browse service too and may share playlists through it: try the root's

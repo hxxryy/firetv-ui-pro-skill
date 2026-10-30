@@ -18,9 +18,12 @@ every limit was tested and every performance number measured on the device.
 6. **Speed**: measured fixes for weak TV GPUs and 1 GB of RAM (idle redraws 367 → 75 per 6 s,
    launcher GPU memory while Netflix runs 91 MB → 0.1 MB)
 7. **Extras**: weather, Now Playing, Philips Hue Bluetooth bulbs without a Bridge, sunrise wake-ups
-8. **Keep it**: self-healing, backups, restore to stock
-9. **QA**: an on-device smoke-test checklist
-10. **Limits & troubleshooting**
+8. **Music**: a remote-friendly Apple Music / Spotify player on the home screen: Up Next, your own
+   playlists (Apple Music's are read and started by operating its screens for you), shuffle, repeat,
+   love, speaker volume and Bluetooth speakers
+9. **Keep it**: self-healing, backups, restore to stock
+10. **QA**: an on-device smoke-test checklist
+11. **Limits & troubleshooting**
 
 ## Install
 

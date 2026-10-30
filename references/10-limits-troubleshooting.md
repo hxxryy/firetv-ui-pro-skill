@@ -30,4 +30,9 @@
 | Focused card cut off | `clipToPadding`/`clipChildren` on the container or scroll content. |
 | Square grey box over focus | Android's default focus highlight: disable it per view. |
 | Nothing focused on a new page | A focusable ScrollView took focus before layout. |
+| Music player shows nothing | The app publishes no media session (web-player wrappers), or the notification listener isn't enabled. |
+| Music stops when Home is pressed | The app has no background playback (foreground service); nothing the launcher can fix. |
+| Agent can't tap / capabilities unchanged | Toggle the accessibility service off and on after changing its XML abilities. |
+| Agent presses Play but nothing starts | A pop-up or "keep/clear queue?" dialog is up, or the button ignores ACTION_CLICK (use a gesture tap). |
+| Emoji show as a box | Newer than the device's emoji font (Android 9 lacks e.g. 🪩). |
 | Stick sleeps anyway | `stay_on_while_plugged_in`, `sleep_timeout`, `screen_off_timeout` reset by an update: heal; or the TV's USB port cut power. |

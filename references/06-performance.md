@@ -91,7 +91,30 @@ background thread (computing their strength from the blurred image's brightness 
 every focus change, they landed in the middle of transitions. Take them at quiet moments
 (phase 4).
 
-### 9. Your launcher, AOT
+### 9. Sheets and pop-ups (lessons from a music player)
+- **Hide what a big sheet covers.** Behind a large modal, draw one frosted, darkened copy of the
+  wallpaper and stop drawing Home and the photo once the sheet has faded in; also cut the sheet's
+  area out of that backdrop (`clipOutRect`, inset by the corner radius) once it has settled.
+- **Pause ambient motion** (wallpaper drift) while a sheet is open.
+- **Don't clip a whole sheet to its rounded outline** (`setClipToOutline` on a big container makes
+  every child draw through a curved clip); draw only the background with rounded corners.
+- **Progress bars**: set the level directly on each tick (no 200 ms glide every second, which meant
+  ~13 redraws a second), and skip sub-pixel changes.
+- **Self-sizing labels whose text changes every second** (elapsed / remaining time) trigger a
+  measure and layout of the *whole window* each time. Give them a fixed size.
+- **Animated shadows** (translationZ on focus) are recomputed every frame; on dark sheets they're
+  invisible anyway. Keep the grow animation, drop the lift.
+- **Colour emoji are re-rasterised at every new scale** on Android 9: a growing focus animation
+  over an emoji label re-draws it every frame. Render emoji labels to a bitmap once.
+- **Shelves (HorizontalScrollView)**: if the GPU can't hold 60 fps while a whole row glides, jump
+  (`setSmoothScrollingEnabled(false)`); a crisp jump feels faster than a juddering glide.
+- **Pre-bake filters**: darken a blurred cover once per song rather than applying a colour filter
+  on every frame.
+- Skip setters when nothing changed: `setText` with the same text still requests layout.
+- Typical result: a music sheet sitting open went from 106 to 6 frames per 6 s; moving around it
+  from 30–35 ms to 18–22 ms a frame.
+
+### 10. Your launcher, AOT
 `cmd package compile -m speed -f <your.package>` after each install. (Not for big apps: see phase 2.)
 
 ## Results on the test stick

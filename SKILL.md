@@ -1,6 +1,6 @@
 ---
 name: firetv-ui-pro
-description: Turn an Amazon Fire TV Stick (Fire OS 6/7/8) into a fast, ad-free, Apple TV-style device with a custom Liquid Glass home screen. Covers finding the stick over Wi-Fi with ADB, debloating (ads, Alexa, screensaver, sleep, updates), building and installing a custom launcher without Gradle, making the remote's Home button return to it, iOS-26-style glass UI design for a 10-foot screen, GPU/memory performance tuning on weak TV hardware, extras (weather, Now Playing, Philips Hue Bluetooth bulbs), self-healing after Amazon updates, and on-device QA. Use when someone wants to debloat, speed up, customise, replace the launcher of, or build a home-screen app for a Fire TV / Fire Stick / Android TV box.
+description: Turn an Amazon Fire TV Stick (Fire OS 6/7/8) into a fast, ad-free, Apple TV-style device with a custom Liquid Glass home screen. Covers finding the stick over Wi-Fi with ADB, debloating (ads, Alexa, screensaver, sleep, updates), building and installing a custom launcher without Gradle, making the remote's Home button return to it, iOS-26-style glass UI design for a 10-foot screen, GPU/memory performance tuning on weak TV hardware, a remote-friendly Apple Music / Spotify player (including driving Apple Music's own screens via accessibility to list and play the user's playlists), speaker volume and Bluetooth speakers, extras (weather, Now Playing, Philips Hue Bluetooth bulbs), self-healing after Amazon updates, and on-device QA. Use when someone wants to debloat, speed up, customise, replace the launcher of, or build a home-screen app for a Fire TV / Fire Stick / Android TV box.
 ---
 
 # Fire TV UI Pro
@@ -26,6 +26,7 @@ for risk are theirs to decide.
 | 7. Extras | Weather, Now Playing, Hue Bluetooth lights, wake-ups, screensaver | [references/07-features.md](references/07-features.md) |
 | 8. Keep it | Self-heal after Amazon updates, backups, a way back to stock | [references/08-heal-backup-restore.md](references/08-heal-backup-restore.md) |
 | 9. QA | Deep on-device smoke test before calling it done | [references/09-qa-checklist.md](references/09-qa-checklist.md) |
+| 10. Music | Apple Music / Spotify player, playlists, speaker volume, Bluetooth speakers | [references/11-music.md](references/11-music.md) |
 
 Limits and fixes for common failures: [references/10-limits-troubleshooting.md](references/10-limits-troubleshooting.md).
 

@@ -41,6 +41,12 @@ corners, edges and small text; at full-screen size clipping bugs are easy to mis
       translucent glass).
 - [ ] No text wraps to two lines in cards or footers; long app names ellipsize.
 - [ ] Status lines are true (e.g. "1 of 2 on", not "On", when only one light is on).
+- [ ] Back from a sheet returns focus to the control that opened it (not the first Dock app,
+      where the next OK launches something unexpected).
+- [ ] ☰ (menu) works on buttons inside sheets too, not only on the page underneath.
+- [ ] D-pad Left/Right on a pill moves focus; it must not also skip tracks or change values.
+- [ ] Music: the player shows the right song after every action; a playlist started from the
+      launcher is really that playlist (check the queue), not a catalogue search result.
 
 **Readability**
 - [ ] Cycle to the brightest wallpaper: clock, date, captions, pill text and card text all readable.

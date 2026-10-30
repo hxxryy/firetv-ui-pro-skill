@@ -142,6 +142,14 @@ Spotify's TV app has a browse service too and may share playlists through it: tr
 children (and a "playlists/library" folder) and offer them as tiles (`playFromMediaId`). Keep an
 "Open Spotify" button: its TV app is remote-friendly. Let users add playlist names as a fallback.
 
+## Clearing stale music
+
+Music left paused for hours keeps the now-playing pill, speaker button and music screensaver
+around. Watch the music apps' sessions from a component that always runs (the accessibility
+service, not the activity): when everything is paused and nothing plays, start a 10-minute timer
+(restart it on any state change) and then call `transportControls.stop()`. Only stop music apps,
+never a paused film or TV channel. Offer a manual ✕ Clear in the music sheet too.
+
 ## Speaker volume and Bluetooth speakers
 
 - Over HDMI, Fire OS pins the stick's music volume at 100% (the TV owns it; `isVolumeFixed()` or
